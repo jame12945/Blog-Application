@@ -1,3 +1,4 @@
+import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
 
 class AuthGradientButton extends StatelessWidget {
@@ -5,6 +6,25 @@ class AuthGradientButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: () {}, child: Text('Sign Up'));
+    return Container(
+      decoration: BoxDecoration(
+          gradient: const LinearGradient(
+              colors: [AppPallete.gradient1, AppPallete.gradient2],
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight),
+          borderRadius: BorderRadius.circular(7)),
+      child: ElevatedButton(
+        onPressed: () {},
+        //if its cannot reuse component the style it on widget but if not set on theme.dart
+        style: ElevatedButton.styleFrom(
+            fixedSize: const Size(395, 55),
+            backgroundColor: AppPallete.transparentColor,
+            shadowColor: AppPallete.transparentColor),
+        child: const Text(
+          'Sign Up',
+          style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+        ),
+      ),
+    );
   }
 }
