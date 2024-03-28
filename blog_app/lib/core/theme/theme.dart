@@ -10,6 +10,7 @@ class AppTheme {
   static final darkThemeMode = ThemeData.dark().copyWith(
       //set default input scaffold form Widget here or etc,
       scaffoldBackgroundColor: AppPallete.backgroundColor,
+      appBarTheme: AppBarTheme(backgroundColor: AppPallete.backgroundColor),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.all(27),
         enabledBorder: _border(),
