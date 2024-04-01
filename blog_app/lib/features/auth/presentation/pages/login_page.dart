@@ -1,7 +1,7 @@
 import 'package:blog_app/core/theme/app_pallete.dart';
-import 'package:blog_app/featutes/auth/presentation/pages/signup_page.dart';
-import 'package:blog_app/featutes/auth/presentation/widgets/auth_field.dart';
-import 'package:blog_app/featutes/auth/presentation/widgets/auth_gradient_button.dart';
+import 'package:blog_app/features/auth/presentation/pages/signup_page.dart';
+import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
+import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
 
 //stf
@@ -49,7 +49,11 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 20,
             ),
-            const AuthGradientButton(buttonText: 'Sign Up'),
+            //function are nor constant
+            AuthGradientButton(
+              buttonText: 'Sign Up',
+              onPressed: () {},
+            ),
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {

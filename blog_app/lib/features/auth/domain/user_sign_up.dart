@@ -1,6 +1,6 @@
 import 'package:blog_app/core/error/failures.dart';
 import 'package:blog_app/core/usecases/usecase.dart';
-import 'package:blog_app/featutes/auth/domain/repository/auth_repository.dart';
+import 'package:blog_app/features/auth/domain/repository/auth_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
 class UserSignUp implements UseCase<String, userSignUpParams> {
@@ -11,7 +11,10 @@ class UserSignUp implements UseCase<String, userSignUpParams> {
   Future<Either<Failure, String>> call(userSignUpParams params) async {
     //don't forget return
     return await authRepository.signUpWithEmailPassword(
-        name: params.name, email: params.email, password: params.password);
+      name: params.name,
+      email: params.email,
+      password: params.password,
+    );
   }
 }
 
@@ -20,6 +23,9 @@ class userSignUpParams {
   final String password;
   final String name;
 
-  userSignUpParams(
-      {required this.email, required this.password, required this.name});
+  userSignUpParams({
+    required this.email,
+    required this.password,
+    required this.name,
+  });
 }
