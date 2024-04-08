@@ -34,68 +34,70 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
-        body: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            key: formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Sign Up',
-                    style:
-                        TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
-                const SizedBox(height: 30),
-                AuthFields(
-                  hintText: 'Name',
-                  controller: nameController,
-                ),
-                const SizedBox(height: 15),
-                AuthFields(hintText: 'Email', controller: emailController),
-                const SizedBox(height: 15),
-                AuthFields(
-                    hintText: 'Password',
-                    controller: passwordController,
-                    isObscureText: true),
-                const SizedBox(
-                  height: 20,
-                ),
-                AuthGradientButton(
-                  buttonText: 'Sign Up',
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      context.read<AuthBloc>().add(
-                            AuthSignUp(
-                              email: emailController.text.trim(),
-                              password: passwordController.text.trim(),
-                              name: nameController.text.trim(),
-                            ),
-                          );
-                    }
-                  },
-                ),
-                const SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context, LoginPage.route());
-                  },
-                  child: RichText(
-                    text: TextSpan(
-                        text: 'Already have an account? ',
-                        style: Theme.of(context).textTheme.titleMedium,
-                        children: [
-                          TextSpan(
-                            text: 'Sign In',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(
-                                    color: AppPallete.gradient2,
-                                    fontWeight: FontWeight.bold),
-                          ),
-                        ]),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Sign Up',
+                      style:
+                          TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 30),
+                  AuthFields(
+                    hintText: 'Name',
+                    controller: nameController,
                   ),
-                )
-              ],
+                  const SizedBox(height: 15),
+                  AuthFields(hintText: 'Email', controller: emailController),
+                  const SizedBox(height: 15),
+                  AuthFields(
+                      hintText: 'Password',
+                      controller: passwordController,
+                      isObscureText: true),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  AuthGradientButton(
+                    buttonText: 'Sign Up',
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        context.read<AuthBloc>().add(
+                              AuthSignUp(
+                                email: emailController.text.trim(),
+                                password: passwordController.text.trim(),
+                                name: nameController.text.trim(),
+                              ),
+                            );
+                      }
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, LoginPage.route());
+                    },
+                    child: RichText(
+                      text: TextSpan(
+                          text: 'Already have an account? ',
+                          style: Theme.of(context).textTheme.titleMedium,
+                          children: [
+                            TextSpan(
+                              text: 'Sign In',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                      color: AppPallete.gradient2,
+                                      fontWeight: FontWeight.bold),
+                            ),
+                          ]),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ));
